@@ -1,0 +1,23 @@
+// ModifyRecords (1)
+MATCH (s:students {ssn: 144673371})
+SET s.name="Scott";
+
+// ModifyRecords (2)
+MATCH (s:students {ssn: 144673371})-[m:major]->(d:degrees)
+SET m.name="Computer Science", m.level="MS";
+
+// ModifyRecords (3)
+MATCH (s:students)-[r:register {regtime:"Summer2024"}]->(c:courses)
+DELETE r;
+
+// ModifyRecords (4)
+MATCH (d:departments)-[a:administer]->(dg:degrees)
+WHERE d.name="Applied Mathematics" 
+DETACH DELETE dg, d;
+
+// ModifyRecords (5)
+MATCH (c:courses)
+WITH c.department_code AS course_d_code, c.level AS course_level, MIN(c.number) AS smallest_num
+MATCH (c:courses)
+WHERE c.department_code=course_d_code AND c.level=course_level AND NOT c.number=smallest_num
+DETACH DELETE c;

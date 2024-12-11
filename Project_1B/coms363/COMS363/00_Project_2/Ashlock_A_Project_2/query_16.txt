@@ -1,0 +1,8 @@
+MATCH (s:students)-[]->(d:degrees)
+WHERE s.gender="M"
+WITH d.name AS degree_name, d.level AS degree_level, COUNT(s) as num_males
+MATCH (s:students)-[]->(d:degrees)
+WHERE s.gender="F" AND d.name=degree_name AND d.level=degree_level
+WITH d.name AS degree_name, d.level AS degree_level, COUNT(s) as num_females, num_males
+WHERE num_males>num_females
+RETURN degree_name, degree_level;

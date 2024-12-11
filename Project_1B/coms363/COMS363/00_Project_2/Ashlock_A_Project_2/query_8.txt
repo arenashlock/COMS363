@@ -1,0 +1,4 @@
+MATCH (s:students)
+WHERE s.name CONTAINS "n" OR s.name CONTAINS "N"
+RETURN s.name, s.snum, s.ssn
+ORDER BY s.snum;

@@ -1,0 +1,4 @@
+MATCH (a:students {name:"Lisa"}),
+(b:departments {name:"Computer Science"}), 
+p = shortestPath((a)-[*..]-(b))
+RETURN p

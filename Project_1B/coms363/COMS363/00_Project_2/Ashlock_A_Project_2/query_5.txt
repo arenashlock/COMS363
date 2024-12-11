@@ -1,0 +1,4 @@
+MATCH (d:departments)-[a:administer]->(dg:degrees)
+WHERE d.name="Computer Science"
+RETURN dg.name, dg.level
+ORDER BY dg.level;

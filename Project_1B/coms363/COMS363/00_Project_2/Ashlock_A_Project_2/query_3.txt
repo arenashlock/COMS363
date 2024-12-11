@@ -1,0 +1,4 @@
+MATCH (d:departments)-[o:offers]->(c:courses)
+WHERE d.name="Computer Science"
+RETURN c.number, c.name
+ORDER BY c.number;

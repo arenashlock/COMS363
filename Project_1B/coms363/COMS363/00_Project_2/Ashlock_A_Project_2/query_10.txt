@@ -1,0 +1,4 @@
+MATCH (c:courses)
+OPTIONAL MATCH (s:students)-[r:register]->(c)
+RETURN c.number, c.name, COUNT(s.snum)
+ORDER BY c.number;

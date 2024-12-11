@@ -1,0 +1,2 @@
+MATCH (a:students {name:"Lisa"})-[*1]-(b)
+RETURN b;

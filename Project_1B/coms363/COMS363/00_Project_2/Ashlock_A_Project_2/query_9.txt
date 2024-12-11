@@ -1,0 +1,4 @@
+MATCH (s:students)
+WHERE s.name > "Amy" AND s.name < "Nicole"
+RETURN s.name, s.snum, s.ssn
+ORDER BY s.name;
